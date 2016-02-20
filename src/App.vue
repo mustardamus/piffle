@@ -1,6 +1,6 @@
 <style lang="stylus">
-@import '../node_modules/bulma/css/bulma.css'
-@import '../bower_components/font-awesome/css/font-awesome.css'
+@import '../vendor/bulma.min.css'
+@import '../bower_components/font-awesome/css/font-awesome.min.css'
 @import url('https://fonts.googleapis.com/css?family=Carter+One')
 
 html, body
