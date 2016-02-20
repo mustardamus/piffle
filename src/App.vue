@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <speech-recognition></speech-recognition>
+    <words></words>
   </div>
 </template>
 
@@ -13,4 +14,5 @@ body
 module.exports =
   components:
     SpeechRecognition: require('./components/speech-recognition.vue')
+    Words            : require('./components/words.vue')
 </script>
