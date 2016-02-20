@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <speech-recognition></speech-recognition>
-    <words></words>
+    <mic-access></mic-access>
   </div>
 </template>
 
@@ -14,7 +13,12 @@ body
 
 <script lang="coffee">
 module.exports =
+  data: ->
+    audioContext: null # initialized audio context by mic-access
+    audioStream : null # initialized audio stream
+    
   components:
+    MicAccess        : require('./components/mic-access.vue')
     SpeechRecognition: require('./components/speech-recognition.vue')
     Words            : require('./components/words.vue')
 </script>
