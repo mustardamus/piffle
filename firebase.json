@@ -1,0 +1,13 @@
+{
+  "firebase": "ss16-piffle",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**",
+    "src",
+    "test",
+    "karma.conf.js",
+    "README.md"
+  ]
+}
