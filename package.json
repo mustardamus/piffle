@@ -2,6 +2,7 @@
   "name": "ss16-piffle",
   "description": "Entry for Static Showdown 2016",
   "author": "Sebastian Senf",
+  "version": "0.1",
   "private": true,
   "scripts": {
     "dev": "watchify -vd -p browserify-hmr -e src/main.js -o dist/build.js & http-server -c 1 -a localhost",
