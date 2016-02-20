@@ -59,7 +59,7 @@ module.exports =
       outVolume = Math.max(rms, outVolume * 0.95)
 
     drawLoop: ->
-      height = outVolume * (@$data.winHeight * 0.6)
+      height = outVolume * @$data.winHeight * 1.8
 
       canvasContext.clearRect 0, 0, @$data.winWidth, @$data.winHeight
       canvasContext.fillRect 0, 0, @$data.winWidth, height
