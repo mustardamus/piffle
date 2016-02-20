@@ -1,21 +1,16 @@
 <template>
   <div id="app">
-    <hello></hello>
+    <speech-recognition></speech-recognition>
   </div>
 </template>
 
-<script>
-import Hello from './components/Hello.vue'
-
-export default {
-  components: {
-    Hello
-  }
-}
-</script>
-
-<style>
-body {
+<style lang="stylus">
+body
   font-family: Helvetica, sans-serif;
-}
 </style>
+
+<script lang="coffee">
+module.exports =
+  components:
+    SpeechRecognition: require('./components/speech-recognition.vue')
+</script>
