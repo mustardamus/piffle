@@ -1,15 +1,35 @@
 <template>
-  <div>{{volume}}</div>
+  <div id="volume-meter">
+    <canvas id="meter-canvas"></canvas>
+  </div>
 </template>
 
 <script lang="coffee">
-outVolume = 0
+outVolume     = 0
+canvasContext = null
 
 module.exports =
   data: ->
-    volume: 0
+    winWidth: 0
+    winHeight: 0
 
   ready: ->
+    canvasEl                = $('#meter-canvas')
+    canvasContext           = canvasEl[0].getContext('2d')
+    canvasContext.fillStyle = 'black'
+    canvasContext.globalAlpha = 0.4
+    winEl                   = $(window)
+
+    winEl.on 'resize', =>
+      @$data.winWidth  = winEl.width()
+      @$data.winHeight = winEl.height()
+
+      canvasEl.css
+        width : @$data.winWidth
+        height: @$data.winHeight
+
+    winEl.trigger 'resize'
+
     @$root.$on 'haveAudioContext', =>
       @initMeter()
 
@@ -19,8 +39,7 @@ module.exports =
       input  = @$root.$data.audioContext.createMediaStreamSource(stream)
       level  = @$root.$data.audioContext.createScriptProcessor(512)
 
-      level.onaudioprocess = (event) =>
-        @onAudioProcess(event)
+      level.onaudioprocess = @onAudioProcess
 
       level.shutdown = ->
         @disconnect()
@@ -41,7 +60,11 @@ module.exports =
       outVolume = Math.max(rms, outVolume * 0.95)
 
     checkLoop: ->
-      @$data.volume = outVolume
+      height = outVolume * (@$data.winHeight * 0.6)
+
+      canvasContext.clearRect 0, 0, @$data.winWidth, @$data.winHeight
+      canvasContext.fillRect 0, 0, @$data.winWidth, height
+
       requestAnimationFrame(@checkLoop)
 
 </script>
