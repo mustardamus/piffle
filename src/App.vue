@@ -50,6 +50,10 @@ body
         padding: 20px 50px 45px 50px
         text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7)
         box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.3)
+        transition: box-shadow 0.2s ease
+
+        &:hover
+          box-shadow: 17px 17px 0 rgba(0, 0, 0, 0.3)
 
 </style>
 
