@@ -27,9 +27,6 @@
             @$root.$data.audioContext = audioContext
             @$root.$data.audioStream  = stream
 
-            #@$root.$watch 'audioContext'  does not work 
-            @$root.$emit 'haveAudioContext'
-
       initAudio: (cb) ->
         audioContext = null
 

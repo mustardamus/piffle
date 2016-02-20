@@ -30,7 +30,7 @@ module.exports =
 
     winEl.trigger 'resize'
 
-    @$root.$on 'haveAudioContext', =>
+    @$root.$watch 'audioContext', =>
       @initMeter()
 
   methods:
@@ -47,7 +47,7 @@ module.exports =
 
       input.connect level
       level.connect @$root.$data.audioContext.destination
-      @checkLoop()
+      @drawLoop()
 
     onAudioProcess: (event) ->
       buffer = event.inputBuffer.getChannelData(0)
@@ -59,12 +59,13 @@ module.exports =
       rms       = Math.sqrt(sum / buffer.length)
       outVolume = Math.max(rms, outVolume * 0.95)
 
-    checkLoop: ->
+    drawLoop: ->
       height = outVolume * (@$data.winHeight * 0.6)
 
       canvasContext.clearRect 0, 0, @$data.winWidth, @$data.winHeight
       canvasContext.fillRect 0, 0, @$data.winWidth, height
 
-      requestAnimationFrame(@checkLoop)
+      @$root.$data.volume = outVolume
+      requestAnimationFrame => @drawLoop()
 
 </script>
