@@ -1,7 +1,3 @@
-<template>
-  <div>huha</div>
-</template>
-
 <script lang="coffee">
 module.exports =
   data: ->

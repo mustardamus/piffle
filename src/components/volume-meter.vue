@@ -1,6 +1,6 @@
 <template>
   <div id="volume-meter">
-    <canvas id="meter-canvas"></canvas>
+    <canvas id="meter-canvas" width="1280" height="768"></canvas>
   </div>
 </template>
 
@@ -24,9 +24,8 @@ module.exports =
       @$data.winWidth  = winEl.width()
       @$data.winHeight = winEl.height()
 
-      canvasEl.css
-        width : @$data.winWidth
-        height: @$data.winHeight
+      canvasEl.width @$data.winWidth
+      canvasEl.height @$data.winHeight
 
     winEl.trigger 'resize'
 
