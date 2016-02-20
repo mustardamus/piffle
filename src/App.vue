@@ -6,6 +6,8 @@
 </template>
 
 <style lang="stylus">
+@import '../node_modules/bulma/css/bulma.css'
+
 body
   font-family: Helvetica, sans-serif;
 </style>

@@ -17,6 +17,7 @@
     ]
   },
   "dependencies": {
+    "bulma": "0.0.14",
     "vue": "^1.0.0"
   },
   "devDependencies": {
