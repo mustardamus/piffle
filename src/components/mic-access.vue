@@ -9,21 +9,27 @@
       initialized: false
 
     ready: ->
-      @initAudio (err, audioContext, stream) =>
-        if err
-          switch err.name
-            when 'PermissionDeniedError'
-              @$data.error = 'You must allow access to your microphone'
-            when 'NoGetUserMedia'
-              @$data.error = 'Can not access GetUserMedia API'
-            else
-              @$data.error = 'Ooops, something went wrong'
-        else
-          @$data.initialized        = true
-          @$root.$data.audioContext = audioContext
-          @$root.$data.audioStream  = stream
+      @requestAccess()
 
     methods:
+      requestAccess: ->
+        @initAudio (err, audioContext, stream) =>
+          if err
+            switch err.name
+              when 'PermissionDeniedError'
+                @$data.error = 'You must allow access to your microphone'
+              when 'NoGetUserMedia'
+                @$data.error = 'Can not access GetUserMedia API'
+              else
+                @$data.error = 'Ooops, something went wrong'
+          else
+            @$data.initialized        = true
+            @$root.$data.audioContext = audioContext
+            @$root.$data.audioStream  = stream
+
+            #@$root.$watch 'audioContext'  does not work 
+            @$root.$emit 'haveAudioContext'
+
       initAudio: (cb) ->
         audioContext = null
 

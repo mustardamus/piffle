@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <mic-access></mic-access>
+    <volume-meter></volume-meter>
   </div>
 </template>
 
@@ -16,9 +17,10 @@ module.exports =
   data: ->
     audioContext: null # initialized audio context by mic-access
     audioStream : null # initialized audio stream
-    
+
   components:
     MicAccess        : require('./components/mic-access.vue')
+    VolumeMeter      : require('./components/volume-meter.vue')
     SpeechRecognition: require('./components/speech-recognition.vue')
     Words            : require('./components/words.vue')
 </script>
