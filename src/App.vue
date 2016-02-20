@@ -18,9 +18,6 @@ body
   height: 100%
   overflow: hidden
 
-#meter-canvas
-  background: #393950
-
 #content
   position: relative
   z-index: 2
@@ -67,7 +64,7 @@ body
   <div id="content">
     <intro-page></intro-page>
 
-    <section class="hero is-fullheight">
+    <section id="level-1" class="hero is-fullheight">
       <div class="hero-content">
         <div class="container">
           Level 1, bro

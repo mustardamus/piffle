@@ -4,6 +4,11 @@
   </div>
 </template>
 
+<style lang="stylus">
+#meter-canvas
+  background: #393950
+</style>
+
 <script lang="coffee">
 outVolume     = 0
 canvasContext = null

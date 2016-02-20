@@ -15,7 +15,7 @@
 
   .window
     width: 768px
-    margin-top: 10px
+    margin-top: 20px
 
   .shoutout
     font-size: 1.4em
@@ -65,7 +65,6 @@
       <div class="container">
         <h1 id="logo">
           <span class="title">Piffle</span>
-          <span class="punch">- Talk is cheap -</span>
         </h1>
 
         <div class="window">
@@ -123,7 +122,7 @@
         </div>
 
         <div class="next-level is-text-centered">
-          <a href="#" class="button is-primary is-large" v-bind:class="{'is-disabled':!valid}">
+          <a href="#level-1" class="button is-primary is-large" v-bind:class="{'is-disabled':!valid}" v-on:click.prevent="startClick">
             Start
           </a>
         </div>
@@ -156,4 +155,8 @@
 
       if webkitSpeechRecognition
         @$data.speechApi = true
+
+    methods:
+      startClick: ->
+        $('#content').animate { scrollTop: $('#level-1').offset().top }, 'normal'
 </script>
