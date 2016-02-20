@@ -1,0 +1,22 @@
+{
+  "name": "ss16-piffle",
+  "description": "Entry for Static Showdown 2016",
+  "main": "",
+  "authors": [
+    "Sebastian Senf"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/staticshowdown/ss16-piffle",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "^4.5.0",
+    "jquery": "^2.2.0"
+  }
+}
