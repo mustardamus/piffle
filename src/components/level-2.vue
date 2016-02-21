@@ -9,7 +9,10 @@
             <div class="window">
               <h2>How to play</h2>
               <p>
-                Lets bring in some specific words.
+                Now lets play with speech recognition, shall we?
+              </p>
+              <p>
+                You have 30 seconds to match at least 3 words. More words - more points.
               </p>
             </div>
           </div>

@@ -16,6 +16,7 @@ module.exports =
         @onResult event
 
     @$root.$on 'speech-recognition:start', =>
+      @$root.$data.recognizedWords = []
       @$data.rec.start()
 
     @$root.$on 'speech-recognition:stop', =>

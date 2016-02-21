@@ -50,9 +50,9 @@
         # load twice as much and make sure there are no words with - in it
         if @$root.$data.cheater
           @$data.words = [
-            { word: 'Cat', matched: false }
             { word: 'Dog', matched: false }
-            { word: 'hack', matched: false }
+            { word: 'static', matched: false }
+            { word: 'showdown', matched: false }
             { word: 'winner', matched: false }
           ]
         else
