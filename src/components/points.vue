@@ -35,4 +35,9 @@ module.exports =
     points: 0
 
   ready: ->
+    @$root.$on 'reset', =>
+      @$data.points = 0
+
+    @$root.$on 'points:add', (num) =>
+      @$data.points += num
 </script>

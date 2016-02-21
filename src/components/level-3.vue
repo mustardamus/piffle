@@ -77,6 +77,7 @@ module.exports =
     @$refs.timer.$on 'finished', =>
       @$root.$emit 'speech-recognition:stop'
       @$root.$emit 'silence-meter:stop'
+      @$root.$emit 'points:add', 100
 
       if @$refs.words.countWords()
         @$data.valid = true

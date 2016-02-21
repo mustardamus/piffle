@@ -49,7 +49,7 @@
       resetWords: ->
         for word in @$data.words
           word.matched = false
-          
+
       loadWords: ->
         # load twice as much and make sure there are no words with - in it
         if @$root.$data.cheater
@@ -82,10 +82,17 @@
               break
 
       countWords: ->
-        count = 0
+        count  = 0
+        points = 0
 
         for word in @$data.words
-          count++ if word.matched
+          if word.matched
+            points += word.word.length * 10
+            count++
 
-        return count >= @$data.match
+        if count >= @$data.match
+          @$root.$emit 'points:add', points
+          return true
+        else
+          resturn false
 </script>

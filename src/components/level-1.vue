@@ -80,6 +80,7 @@ module.exports =
 
     @$refs.timer.$on 'finished', =>
       @$root.$emit 'silence-meter:stop'
+      @$root.$emit 'points:add', 100
       @$data.valid = true
 
   methods:
