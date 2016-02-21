@@ -86,6 +86,7 @@ body
 
   <countdown></countdown>
   <game-over></game-over>
+  <speech-recognition></speech-recognition>
 
 </template>
 

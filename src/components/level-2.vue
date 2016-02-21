@@ -7,7 +7,7 @@
         <div class="columns">
           <div class="column">
             <div class="window">
-              <h2>How to play this level</h2>
+              <h2>How to play</h2>
               <p>
                 Lets bring in some specific words.
               </p>
@@ -19,7 +19,7 @@
           </div>
 
           <div class="column">
-            <words min="5" max="7" count="10" v-ref:words></words>
+            <words min="5" max="7" count="10" match="3" v-ref:words></words>
           </div>
         </div>
 
@@ -51,13 +51,18 @@ module.exports =
   ready: ->
     @$root.$on 'reset', =>
       @$data.valid = false
-      @$refs.words.loadWords()
 
     @$refs.timer.$on 'started', =>
       @$refs.words.$data.shown = true
+      @$root.$emit 'speech-recognition:start'
 
     @$refs.timer.$on 'finished', =>
-      @$data.valid = true
+      @$root.$emit 'speech-recognition:stop'
+
+      if @$refs.words.countWords()
+        @$data.valid = true
+      else
+        @$root.$emit 'game-over', 'Not enough matching words, sorry.'
 
   methods:
     nextLevelClick: ->

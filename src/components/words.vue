@@ -1,6 +1,6 @@
 <template>
   <ul class="words" v-bind:class="{'shown':shown}">
-    <li v-for="word in words">
+    <li v-for="word in words" v-bind:class="{'matched':word.matched}">
       {{word.word}}
     </li>
   </ul>
@@ -16,6 +16,11 @@
       text-shadow: 0 0 15px #E6F2A0
       cursor: default
       transition: text-shadow 0.1s ease
+      transition: opacity 0.2s ease
+
+      &.matched
+        opacity: 0.3
+        text-decoration: line-through
 
     &.shown
       li
@@ -25,7 +30,7 @@
 
 <script lang="coffee">
   module.exports =
-    props: ['min', 'max', 'count']
+    props: ['min', 'max', 'count', 'match']
 
     data: ->
       shown: false
@@ -37,17 +42,37 @@
         @$data.shown = false
         @loadWords()
 
+      @$root.$watch 'recognizedWords', =>
+        @matchWords()
+
     methods:
       loadWords: ->
         # load twice as much and make sure there are no words with - in it
         @$data.words = []
-        url = "http://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&minCorpusCount=0&minLength=#{@$data.min}&maxLength=#{@$data.max}&limit=#{@$data.count * 2}&api_key=#{@$data.apiKey}"
+        url = "#{location.protocol}//api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&minCorpusCount=0&minLength=#{@$data.min}&maxLength=#{@$data.max}&limit=#{@$data.count * 2}&api_key=#{@$data.apiKey}&includePartOfSpeech=verb,adjective"
 
         $.getJSON url, (res) =>
           for word in res
             if word.word.indexOf('-') is -1 and word.word.indexOf("'") is -1 and word.word.indexOf(" ") is -1
               if @$data.words.length < @$data.count
-                @$data.words.push word
+                @$data.words.push
+                  word   : word.word
+                  matched: false
               else
                 break
+
+      matchWords: ->
+        for recWord in @$root.$data.recognizedWords
+          for genWord in @$data.words
+            if recWord.toLowerCase() is genWord.word.toLowerCase()
+              genWord.matched = true
+              break
+
+      countWords: ->
+        count = 0
+
+        for word in @$data.words
+          count++ if word.matched
+
+        return count >= @$data.match
 </script>
