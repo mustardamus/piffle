@@ -1,4 +1,5 @@
 <style lang="stylus">
+//http://www.colourlovers.com/palette/4064100/Cows_with_Guns
 @import '../vendor/bulma.min.css'
 @import '../bower_components/font-awesome/css/font-awesome.min.css'
 @import url('https://fonts.googleapis.com/css?family=Carter+One')
@@ -18,9 +19,6 @@ body
   height: 100%
   overflow: hidden
 
-#meter-canvas
-  background: #393950
-
 #content
   position: relative
   z-index: 2
@@ -31,6 +29,22 @@ body
     width: 100%
     height: 100%
     background: none
+    transition: opacity 0.3s ease
+
+    &.is-disabled
+      opacity: 0.1
+
+    .meta
+      position: relative
+
+      .title
+        color: #CCE9BC
+
+      .done
+        font-family: 'Carter One', cursive
+        font-size: 3em
+        color: #E6F2A0
+        text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2)
 
     .window
       background: white
@@ -38,6 +52,22 @@ body
       box-shadow: 3px 3px 0 rgba(255, 255, 255, 0.1)
       text-align: left
       padding: 20px 30px
+
+      p
+        font-size: 1.1em
+        margin-top: 10px
+
+    h1
+      font-family: 'Carter One', cursive
+      font-size: 4.8em
+      text-shadow: 3px 3px 0 rgba(255, 255, 255, 0.1)
+      margin-bottom: 20px
+      color: rgba(0, 0, 0, 0.3)
+
+    h2
+      font-family: 'Carter One', cursive
+      font-size: 1.8em
+      color: #444
 
     .next-level
       margin-top: 30px
@@ -62,19 +92,21 @@ body
     <mic-access></mic-access>
     <volume-meter></volume-meter>
     <silence-meter></silence-meter>
+    <points></points>
   </div>
 
   <div id="content">
     <intro-page></intro-page>
-
-    <section class="hero is-fullheight">
-      <div class="hero-content">
-        <div class="container">
-          Level 1, bro
-        </div>
-      </div>
-    </section>
+    <level1></level1>
+    <level2></level2>
+    <level3></level3>
+    <share-page></share-page>
   </div>
+
+  <countdown></countdown>
+  <game-over></game-over>
+  <speech-recognition></speech-recognition>
+  <navigate></navigate>
 
 </template>
 
@@ -86,5 +118,15 @@ module.exports =
     VolumeMeter      : require('./components/volume-meter.vue')
     SilenceMeter     : require('./components/silence-meter.vue')
     SpeechRecognition: require('./components/speech-recognition.vue')
-    Words            : require('./components/words.vue')
+    Level1           : require('./components/level-1.vue')
+    Level2           : require('./components/level-2.vue')
+    Level3           : require('./components/level-3.vue')
+    Countdown        : require('./components/countdown.vue')
+    GameOver         : require('./components/game-over.vue')
+    Navigate         : require('./components/navigation.vue')
+    Points           : require('./components/points.vue')
+    SharePage        : require('./components/share-page.vue')
+
+  ready: ->
+    @$root.$emit 'reset' # reset everything when app initially loaded
 </script>

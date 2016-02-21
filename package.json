@@ -2,7 +2,7 @@
   "name": "ss16-piffle",
   "description": "Entry for Static Showdown 2016",
   "author": "Sebastian Senf",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "scripts": {
     "dev": "watchify -vd -p browserify-hmr -e src/main.js -o dist/build.js & http-server -c 1 -a localhost",
@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "bulma": "0.0.14",
+    "lodash": "^4.5.0",
     "vue": "^1.0.0"
   },
   "devDependencies": {
