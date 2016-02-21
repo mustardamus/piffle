@@ -48,6 +48,10 @@ module.exports =
     Timer: require('./timer.vue')
 
   ready: ->
+    @$refs.timer.$on 'started', =>
+
+    @$refs.timer.$on 'finished', =>
+      @$data.valid = true
 
   methods:
     nextLevelClick: ->

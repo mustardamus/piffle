@@ -29,11 +29,6 @@
           <div class="column meta">
             <timer seconds="30" v-ref:timer v-if="!valid"></timer>
 
-            <div class="start">
-              <a v-on:click="startClick" class="button is-primary">
-                Start
-              </a>
-            </div>
             <div class="done" v-if="valid">
               Well done!
             </div>
@@ -73,33 +68,9 @@
       font-size: 3em
       color: #E6F2A0
       text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2)
-
-    .start
-      position: absolute
-      top: 0
-      left: 0
-      width: 100%
-      height: 200px
-      background: rgba(57,57,80, 0.4)
-
-      .button
-        margin-top: 50px
-        font-family: 'Carter One', cursive
-        font-size: 2em
-        padding: 10px 20px 35px 20px
-        background: #E6F2A0
-        color: #444
-        box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.4)
-        transition: box-shadow 0.2s ease
-
-        &:hover
-          box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.4)
-          color: #222
 </style>
 
 <script lang="coffee">
-_ = require('lodash')
-
 module.exports =
   data: ->
     valid: false
@@ -108,24 +79,20 @@ module.exports =
     Timer: require('./timer.vue')
 
   ready: ->
-    _.bindAll @, 'startClick'
-
     @$root.$on 'reset', =>
       @$data.valid = false
 
       @$root.$emit 'silence-meter:stop'
       $('.meta .start', @$el).show()
 
+    @$refs.timer.$on 'started', =>
+      @$root.$emit 'silence-meter:start'
+
+    @$refs.timer.$on 'finished', =>
+      @$root.$emit 'silence-meter:stop'
+      @$data.valid = true
+
   methods:
-    startClick: ->
-      @$root.$emit 'countdown', =>
-        $('.meta .start', @$el).hide()
-        @$root.$emit 'silence-meter:start'
-
-        @$refs.timer.start =>
-          @$root.$emit 'silence-meter:stop'
-          @$data.valid = true
-
     nextLevelClick: ->
       $('#content').animate { scrollTop: $('#level-2').offset().top }
 </script>
