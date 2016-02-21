@@ -110,7 +110,8 @@ module.exports =
   methods:
     startClick: ->
       @$root.$emit 'countdown', =>
-        console.log 'fire'
+        $('.meta .start', @$el).hide()
+        @$root.$emit 'silence-meter:start'
 
     nextLevelClick: ->
       console.log 'bow'

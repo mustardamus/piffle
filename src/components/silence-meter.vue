@@ -29,16 +29,23 @@
 <script lang="coffee">
 module.exports =
   data: ->
-    intervalId: null
-    period    : 0
-    lastCheck : 0
+    period   : 0
+    lastCheck: 0
+    running  : false
 
   ready: ->
-    @start()
+    @$root.$on 'silence-meter:start', =>
+      @start()
+
+    @$root.$on 'silence-meter:stop', =>
+      @$data.running = false
 
   methods:
     start: ->
       @$data.lastCheck = Date.now()
+      @$data.period    = 0
+      @$data.running   = true
+
       @checkVolume()
 
     checkVolume: ->
@@ -70,6 +77,8 @@ module.exports =
 
 
         @$data.lastCheck = Date.now()
-        requestAnimationFrame => @checkVolume()
+
+        if @$data.running
+          requestAnimationFrame => @checkVolume()
 
 </script>
