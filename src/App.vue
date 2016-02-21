@@ -100,6 +100,7 @@ body
     <level1></level1>
     <level2></level2>
     <level3></level3>
+    <share-page></share-page>
   </div>
 
   <countdown></countdown>
@@ -124,6 +125,7 @@ module.exports =
     GameOver         : require('./components/game-over.vue')
     Navigate         : require('./components/navigation.vue')
     Points           : require('./components/points.vue')
+    SharePage        : require('./components/share-page.vue')
 
   ready: ->
     @$root.$emit 'reset' # reset everything when app initially loaded

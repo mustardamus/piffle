@@ -4,6 +4,12 @@
     font-size: 6em !important
     color: #E6F2A0 !important
 
+  h2
+    margin-top: 10px
+
+    &:first-child
+      margin: 0
+
   .window
     width: 768px
 
@@ -69,7 +75,23 @@
 
           <div class="columns">
             <div class="column">
-              Here will be some helpful text that you SHOULD NOT finish last minute.
+              <h2>What is this?</h2>
+              <p>
+                Piffle is a little speaking game containing three levels, all played
+                by you and your voice.
+              </p>
+
+              <h2>What do I need to play?</h2>
+              <p>
+                Simple - every item on the checklist to the right must be
+                completed. Hit <code>Play</code> and clear your throat.
+              </p>
+
+              <h2>So... why?</h2>
+              <p>
+                Getting better in talking is all training. Just like anything else.
+                This little game aides you and your rapper career.
+              </p>
             </div>
 
             <div class="column is-5">

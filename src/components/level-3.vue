@@ -24,7 +24,7 @@
               Booyah!
             </div>
             <div class="title" v-if="valid">
-              Play the next level
+              You piffle gewd...
             </div>
           </div>
 
@@ -35,7 +35,7 @@
 
         <div class="next-level is-text-centered">
           <a v-on:click="nextLevelClick" class="button is-primary" v-bind:class="{'is-disabled':!valid}">
-            Bonus Level
+            You've made it
           </a>
         </div>
       </div>
