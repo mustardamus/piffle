@@ -94,6 +94,7 @@ body
     <intro-page></intro-page>
     <level1></level1>
     <level2></level2>
+    <level3></level3>
   </div>
 
   <countdown></countdown>
@@ -112,6 +113,7 @@ module.exports =
     SpeechRecognition: require('./components/speech-recognition.vue')
     Level1           : require('./components/level-1.vue')
     Level2           : require('./components/level-2.vue')
+    Level3           : require('./components/level-3.vue')
     Countdown        : require('./components/countdown.vue')
     GameOver         : require('./components/game-over.vue')
 

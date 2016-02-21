@@ -22,6 +22,9 @@ module.exports =
     @$root.$on 'speech-recognition:stop', =>
       @$data.rec.stop()
 
+    @$root.$on 'reset', =>
+      @$root.$data.recognizedWords = []
+
   methods:
     onResult: (event) ->
       for result in event.results

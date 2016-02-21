@@ -47,6 +47,12 @@
 #level-2
   .container
     width: 960px
+
+  .meta
+    margin-top: 30px
+
+  .words
+    margin-top: 20px
 </style>
 
 <script lang="coffee">
