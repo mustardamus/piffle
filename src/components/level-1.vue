@@ -27,16 +27,22 @@
             </div>
           </div>
           <div class="column meta">
-            <div class="seconds">
+            <div class="seconds" v-if="!valid">
               {{secondsLeft}}
             </div>
-            <div class="title">
+            <div class="title" v-if="!valid">
               Seconds Left
             </div>
             <div class="start">
               <a v-on:click="startClick" class="button is-primary">
                 Start
               </a>
+            </div>
+            <div class="done" v-if="valid">
+              Well done!
+            </div>
+            <div class="title" v-if="valid">
+              Play the next level
             </div>
           </div>
         </div>
@@ -73,6 +79,12 @@
     position: relative
     margin-top: 70px
 
+    .done
+      font-family: 'Carter One', cursive
+      font-size: 3em
+      color: #E6F2A0
+      text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2)
+
     .start
       position: absolute
       top: 0
@@ -101,8 +113,9 @@ _ = require('lodash')
 
 module.exports =
   data: ->
-    valid: false
+    valid      : false
     secondsLeft: 30
+    intervalId : null
 
   ready: ->
     _.bindAll @, 'startClick'
@@ -112,6 +125,15 @@ module.exports =
       @$root.$emit 'countdown', =>
         $('.meta .start', @$el).hide()
         @$root.$emit 'silence-meter:start'
+
+        @$data.intervalId = setInterval =>
+          @$data.secondsLeft -= 1
+
+          if @$data.secondsLeft is 0
+            clearInterval @$data.intervalId
+            @$root.$emit 'silence-meter:stop'
+            @$data.valid = true
+        , 1000
 
     nextLevelClick: ->
       console.log 'bow'

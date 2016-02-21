@@ -39,6 +39,7 @@ module.exports =
 
     @$root.$on 'silence-meter:stop', =>
       @$data.running = false
+      $('.bar', @$el).width '1%'
 
   methods:
     start: ->
@@ -49,8 +50,8 @@ module.exports =
       @checkVolume()
 
     checkVolume: ->
-      winWidth         = $(window).width()
-      barEl            = $('.bar', @$el)
+      winWidth = $(window).width()
+      barEl    = $('.bar', @$el)
 
       if @$root.$data.volume < 0.08
         @$data.period += Date.now() - @$data.lastCheck
@@ -74,7 +75,6 @@ module.exports =
           barEl.addClass 'critical'
         else
           barEl.removeClass 'critical'
-
 
         @$data.lastCheck = Date.now()
 
