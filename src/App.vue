@@ -92,6 +92,7 @@ body
     <mic-access></mic-access>
     <volume-meter></volume-meter>
     <silence-meter></silence-meter>
+    <points></points>
   </div>
 
   <div id="content">
@@ -122,6 +123,7 @@ module.exports =
     Countdown        : require('./components/countdown.vue')
     GameOver         : require('./components/game-over.vue')
     Navigate         : require('./components/navigation.vue')
+    Points           : require('./components/points.vue')
 
   ready: ->
     @$root.$emit 'reset' # reset everything when app initially loaded
