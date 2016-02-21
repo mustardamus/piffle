@@ -58,14 +58,16 @@ module.exports =
         width = Math.floor((@$data.period / @$root.$data.silencePeriod) * 100) + 1
 
         if width is 0
-          width = 1
+          barEl.animate { width: "1%" }, 'fast'
+        else
+          barEl.width "#{width}%"
 
         if @$root.$data.silencePeriod / @$data.period <= 2
           barEl.addClass 'critical'
         else
           barEl.removeClass 'critical'
 
-        barEl.width "#{width}%"
+
         @$data.lastCheck = Date.now()
         requestAnimationFrame => @checkVolume()
 

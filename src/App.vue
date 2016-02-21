@@ -1,4 +1,5 @@
 <style lang="stylus">
+//http://www.colourlovers.com/palette/4064100/Cows_with_Guns
 @import '../vendor/bulma.min.css'
 @import '../bower_components/font-awesome/css/font-awesome.min.css'
 @import url('https://fonts.googleapis.com/css?family=Carter+One')

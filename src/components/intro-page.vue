@@ -123,7 +123,7 @@
 
         <div class="next-level is-text-centered">
           <a href="#level-1" class="button is-primary is-large" v-bind:class="{'is-disabled':!valid}" v-on:click.prevent="startClick">
-            Start
+            Play
           </a>
         </div>
       </div>
