@@ -29,6 +29,10 @@ body
     width: 100%
     height: 100%
     background: none
+    transition: opacity 0.3s ease
+
+    &.is-disabled
+      opacity: 0.1
 
     .meta
       position: relative
@@ -100,6 +104,7 @@ body
   <countdown></countdown>
   <game-over></game-over>
   <speech-recognition></speech-recognition>
+  <navigate></navigate>
 
 </template>
 
@@ -116,6 +121,7 @@ module.exports =
     Level3           : require('./components/level-3.vue')
     Countdown        : require('./components/countdown.vue')
     GameOver         : require('./components/game-over.vue')
+    Navigate         : require('./components/navigation.vue')
 
   ready: ->
     @$root.$emit 'reset' # reset everything when app initially loaded

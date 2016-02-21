@@ -66,6 +66,6 @@ module.exports =
     againClick: ->
       @$root.$emit 'reset'
       $(@$el).removeClass 'is-active'
-      $('#content').animate { scrollTop: 0 }
+      @$root.$emit 'navigate', 1
 
 </script>

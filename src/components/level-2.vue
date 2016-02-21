@@ -82,5 +82,5 @@ module.exports =
 
   methods:
     nextLevelClick: ->
-      $('#content').animate { scrollTop: $('#level-3').offset().top }
+      @$root.$emit 'navigate', 3
 </script>
