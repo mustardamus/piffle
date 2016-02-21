@@ -2,6 +2,32 @@
   <section id="level-2" class="hero is-fullheight">
     <div class="hero-content">
       <div class="container">
+        <h1>Level 2</h1>
+
+        <div class="columns">
+          <div class="column">
+            <div class="window">
+              <h2>How to play this level</h2>
+              <p>
+                Lets bring in some specific words.
+              </p>
+            </div>
+          </div>
+
+          <div class="column meta">
+            <timer seconds="30" v-ref:timer v-if="!valid"></timer>
+          </div>
+
+          <div class="column">
+            words...
+          </div>
+        </div>
+
+        <div class="next-level is-text-centered">
+          <a v-on:click="nextLevelClick" class="button is-primary" v-bind:class="{'is-disabled':!valid}">
+            Next Level
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -9,11 +35,21 @@
 
 <style lang="stylus">
 #level-2
-  width: 768px
+  .container
+    width: 960px
 </style>
 
 <script lang="coffee">
 module.exports =
   data: ->
+    valid: false
+
+  components:
+    Timer: require('./timer.vue')
+
   ready: ->
+
+  methods:
+    nextLevelClick: ->
+      $('#content').animate { scrollTop: $('#level-3').offset().top }
 </script>
