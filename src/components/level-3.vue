@@ -69,6 +69,7 @@ module.exports =
       @$data.valid = false
 
     @$refs.timer.$on 'started', =>
+      @$refs.words.resetWords()
       @$refs.words.$data.shown = true
       @$root.$emit 'silence-meter:start'
       @$root.$emit 'speech-recognition:start'

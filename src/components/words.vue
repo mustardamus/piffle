@@ -46,6 +46,10 @@
         @matchWords()
 
     methods:
+      resetWords: ->
+        for word in @$data.words
+          word.matched = false
+          
       loadWords: ->
         # load twice as much and make sure there are no words with - in it
         if @$root.$data.cheater
