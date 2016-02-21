@@ -102,4 +102,7 @@ module.exports =
     Level2           : require('./components/level-2.vue')
     Countdown        : require('./components/countdown.vue')
     GameOver         : require('./components/game-over.vue')
+
+  ready: ->
+    @$root.$emit 'reset' # reset everything when app initially loaded
 </script>
