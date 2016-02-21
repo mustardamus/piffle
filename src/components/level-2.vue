@@ -9,6 +9,7 @@
 
 <style lang="stylus">
 #level-2
+  width: 768px
 </style>
 
 <script lang="coffee">

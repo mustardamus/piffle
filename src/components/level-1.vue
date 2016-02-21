@@ -27,12 +27,8 @@
             </div>
           </div>
           <div class="column meta">
-            <div class="seconds" v-if="!valid">
-              {{secondsLeft}}
-            </div>
-            <div class="title" v-if="!valid">
-              Seconds Left
-            </div>
+            <timer seconds="30" v-ref:timer v-if="!valid"></timer>
+
             <div class="start">
               <a v-on:click="startClick" class="button is-primary">
                 Start
@@ -64,13 +60,6 @@
 
   .window
     width: 500px
-
-  .seconds
-    font-family: 'Carter One', cursive
-    font-size: 10em
-    text-shadow: 3px 3px 0 rgba(255, 255, 255, 0.1)
-    color: #E6F2A0
-    line-height: 120px
 
   .title
     color: #CCE9BC
@@ -113,19 +102,16 @@ _ = require('lodash')
 
 module.exports =
   data: ->
-    valid      : false
-    secondsLeft: 30
-    intervalId : null
+    valid: false
+
+  components:
+    Timer: require('./timer.vue')
 
   ready: ->
     _.bindAll @, 'startClick'
 
-    @$root.$on 'game-over', =>
-      clearInterval @$data.intervalId
-
     @$root.$on 'reset', =>
-      @$data.valid       = false
-      @$data.secondsLeft = 30
+      @$data.valid = false
 
       @$root.$emit 'silence-meter:stop'
       $('.meta .start', @$el).show()
@@ -136,17 +122,10 @@ module.exports =
         $('.meta .start', @$el).hide()
         @$root.$emit 'silence-meter:start'
 
-        @$data.secondsLeft -= 1
-
-        @$data.intervalId = setInterval =>
-          @$data.secondsLeft -= 1
-
-          if @$data.secondsLeft is 0
-            clearInterval @$data.intervalId
-            @$root.$emit 'silence-meter:stop'
-            @$data.valid = true
-        , 1000
+        @$refs.timer.start =>
+          @$root.$emit 'silence-meter:stop'
+          @$data.valid = true
 
     nextLevelClick: ->
-      console.log 'bow'
+      $('#content').animate { scrollTop: $('#level-2').offset().top }
 </script>

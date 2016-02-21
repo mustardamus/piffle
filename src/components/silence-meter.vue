@@ -61,7 +61,7 @@ module.exports =
       if @$data.period >= @$root.$data.silencePeriod
         clearInterval @$data.intervalId
         @$data.period = 0
-        @$root.$emit 'game-over', 'You had a too long silence period, sorry.'
+        @$root.$emit 'game-over', 'The silence period was too long, sorry.'
       else
         width = Math.floor((@$data.period / @$root.$data.silencePeriod) * 100) + 1
 
