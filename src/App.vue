@@ -84,6 +84,7 @@ body
   </div>
 
   <countdown></countdown>
+  <game-over></game-over>
 
 </template>
 
@@ -98,4 +99,5 @@ module.exports =
     Words            : require('./components/words.vue')
     Level1           : require('./components/level-1.vue')
     Countdown        : require('./components/countdown.vue')
+    GameOver         : require('./components/game-over.vue')
 </script>

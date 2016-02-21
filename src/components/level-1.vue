@@ -120,11 +120,23 @@ module.exports =
   ready: ->
     _.bindAll @, 'startClick'
 
+    @$root.$on 'game-over', =>
+      clearInterval @$data.intervalId
+
+    @$root.$on 'reset', =>
+      @$data.valid       = false
+      @$data.secondsLeft = 30
+
+      @$root.$emit 'silence-meter:stop'
+      $('.meta .start', @$el).show()
+
   methods:
     startClick: ->
       @$root.$emit 'countdown', =>
         $('.meta .start', @$el).hide()
         @$root.$emit 'silence-meter:start'
+
+        @$data.secondsLeft -= 1
 
         @$data.intervalId = setInterval =>
           @$data.secondsLeft -= 1

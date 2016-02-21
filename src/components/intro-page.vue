@@ -146,5 +146,5 @@
 
     methods:
       startClick: ->
-        $('#content').animate { scrollTop: $('#level-1').offset().top }, 'normal'
+        $('#content').animate { scrollTop: $('#level-1').offset().top }
 </script>

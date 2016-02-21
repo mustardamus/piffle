@@ -39,7 +39,7 @@ module.exports =
 
     @$root.$on 'silence-meter:stop', =>
       @$data.running = false
-      $('.bar', @$el).width '1%'
+      $('.bar', @$el).width('1%').removeClass('critical')
 
   methods:
     start: ->
@@ -61,8 +61,7 @@ module.exports =
       if @$data.period >= @$root.$data.silencePeriod
         clearInterval @$data.intervalId
         @$data.period = 0
-        @$root.$emit 'silencePeriodReached'
-        console.log 'game over'
+        @$root.$emit 'game-over', 'You had a too long silence period, sorry.'
       else
         width = Math.floor((@$data.period / @$root.$data.silencePeriod) * 100) + 1
 
