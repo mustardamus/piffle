@@ -19,7 +19,7 @@
           </div>
 
           <div class="column">
-            words...
+            <words min="5" max="7" count="10" v-ref:words></words>
           </div>
         </div>
 
@@ -46,9 +46,15 @@ module.exports =
 
   components:
     Timer: require('./timer.vue')
+    Words: require('./words.vue')
 
   ready: ->
+    @$root.$on 'reset', =>
+      @$data.valid = false
+      @$refs.words.loadWords()
+
     @$refs.timer.$on 'started', =>
+      @$refs.words.$data.shown = true
 
     @$refs.timer.$on 'finished', =>
       @$data.valid = true

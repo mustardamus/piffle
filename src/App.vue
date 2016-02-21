@@ -97,7 +97,6 @@ module.exports =
     VolumeMeter      : require('./components/volume-meter.vue')
     SilenceMeter     : require('./components/silence-meter.vue')
     SpeechRecognition: require('./components/speech-recognition.vue')
-    Words            : require('./components/words.vue')
     Level1           : require('./components/level-1.vue')
     Level2           : require('./components/level-2.vue')
     Countdown        : require('./components/countdown.vue')
