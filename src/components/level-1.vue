@@ -97,17 +97,21 @@
 </style>
 
 <script lang="coffee">
+_ = require('lodash')
+
 module.exports =
   data: ->
     valid: false
     secondsLeft: 30
 
   ready: ->
+    _.bindAll @, 'startClick'
 
   methods:
     startClick: ->
-      console.log 'ab gehts'
-      
+      @$root.$emit 'countdown', =>
+        console.log 'fire'
+
     nextLevelClick: ->
       console.log 'bow'
 </script>

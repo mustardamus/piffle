@@ -83,6 +83,8 @@ body
     <level1></level1>
   </div>
 
+  <countdown></countdown>
+
 </template>
 
 <script lang="coffee">
@@ -95,4 +97,5 @@ module.exports =
     SpeechRecognition: require('./components/speech-recognition.vue')
     Words            : require('./components/words.vue')
     Level1           : require('./components/level-1.vue')
+    Countdown        : require('./components/countdown.vue')
 </script>
