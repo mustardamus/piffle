@@ -37,6 +37,22 @@ body
       text-align: left
       padding: 20px 30px
 
+      p
+        font-size: 1.1em
+        margin-top: 10px
+
+    h1
+      font-family: 'Carter One', cursive
+      font-size: 4.8em
+      text-shadow: 3px 3px 0 rgba(255, 255, 255, 0.1)
+      margin-bottom: 20px
+      color: rgba(0, 0, 0, 0.3)
+
+    h2
+      font-family: 'Carter One', cursive
+      font-size: 1.8em
+      color: #444
+
     .next-level
       margin-top: 30px
 
@@ -64,14 +80,7 @@ body
 
   <div id="content">
     <intro-page></intro-page>
-
-    <section id="level-1" class="hero is-fullheight">
-      <div class="hero-content">
-        <div class="container">
-          Level 1, bro
-        </div>
-      </div>
-    </section>
+    <level1></level1>
   </div>
 
 </template>
@@ -85,4 +94,5 @@ module.exports =
     SilenceMeter     : require('./components/silence-meter.vue')
     SpeechRecognition: require('./components/speech-recognition.vue')
     Words            : require('./components/words.vue')
+    Level1           : require('./components/level-1.vue')
 </script>

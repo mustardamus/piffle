@@ -1,21 +1,11 @@
 <style lang="stylus">
 #intro
-  #logo
-    .title
-      font-family: 'Carter One', cursive
-      font-size: 6em
-      color: #E6F2A0
-      text-shadow: 3px 3px 0 rgba(255, 255, 255, 0.1)
-
-    .punch
-      display: block
-      font-size: 1.8em
-      color: #DAEDAF
-      word-spacing: 5px
+  h1
+    font-size: 6em !important
+    color: #E6F2A0 !important
 
   .window
     width: 768px
-    margin-top: 20px
 
   .shoutout
     font-size: 1.4em
@@ -63,9 +53,7 @@
   <section id="intro" class="hero is-fullheight">
     <div class="hero-content">
       <div class="container">
-        <h1 id="logo">
-          <span class="title">Piffle</span>
-        </h1>
+        <h1>Piffle</h1>
 
         <div class="window">
           <div class="shoutout">
@@ -122,7 +110,7 @@
         </div>
 
         <div class="next-level is-text-centered">
-          <a href="#level-1" class="button is-primary is-large" v-bind:class="{'is-disabled':!valid}" v-on:click.prevent="startClick">
+          <a class="button is-primary is-large" v-bind:class="{'is-disabled':!valid}" v-on:click="startClick">
             Play
           </a>
         </div>
