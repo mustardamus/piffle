@@ -13,6 +13,9 @@
 
 <style lang="stylus">
 #countdown
+  .modal-content
+    overflow: hidden
+
   .seconds
     font-size: 27em
     text-align: center
