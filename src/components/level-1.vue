@@ -56,18 +56,8 @@
   .window
     width: 500px
 
-  .title
-    color: #CCE9BC
-
   .meta
-    position: relative
     margin-top: 70px
-
-    .done
-      font-family: 'Carter One', cursive
-      font-size: 3em
-      color: #E6F2A0
-      text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2)
 </style>
 
 <script lang="coffee">

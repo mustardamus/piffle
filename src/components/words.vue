@@ -48,7 +48,16 @@
     methods:
       loadWords: ->
         # load twice as much and make sure there are no words with - in it
-        @$data.words = []
+        if @$root.$data.cheater
+          @$data.words = [
+            { word: 'Cat', matched: false }
+            { word: 'Dog', matched: false }
+            { word: 'hack', matched: false }
+            { word: 'winner', matched: false }
+          ]
+        else
+          @$data.words = []
+
         url = "#{location.protocol}//api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&minCorpusCount=0&minLength=#{@$data.min}&maxLength=#{@$data.max}&limit=#{@$data.count * 2}&api_key=#{@$data.apiKey}&includePartOfSpeech=verb,adjective"
 
         $.getJSON url, (res) =>

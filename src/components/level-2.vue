@@ -16,6 +16,13 @@
 
           <div class="column meta">
             <timer seconds="30" v-ref:timer v-if="!valid"></timer>
+
+            <div class="done" v-if="valid">
+              Ow yeah!
+            </div>
+            <div class="title" v-if="valid">
+              Play the next level
+            </div>
           </div>
 
           <div class="column">
